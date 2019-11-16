@@ -1277,6 +1277,16 @@
     "@babel/preset-env" "^7.0.0"
     babel-loader "^8.0.2"
 
+"@ngrx/entity@^8.5.1":
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-8.5.1.tgz#8d9d281ff6a9e45b471dd39a46c707e82ed10456"
+  integrity sha512-v8h0O0sCYSEsbthfGHEFtKX4Sf/tU9dAQz/MtxG2DHL/UDzX47nS9+YmAEtnk+iRNzOlTFTFtoVtQAuCJONHUg==
+
+"@ngrx/store@^8.5.1":
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-8.5.1.tgz#5141610bfd67675f5bc7d31edd1fc996c330675a"
+  integrity sha512-KIQ9Ooro0tl3+ohTpSXvvVUlo40TTLWAWFx2Ys8pI1Yqr39O9da3PNWecLA/2q4YmFf1bO072lYmcBTp1+Shvg==
+
 "@ngtools/webpack@8.3.2":
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.2.tgz#e2b60056a57485b44b72fab52aa00327e5f713e8"

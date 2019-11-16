@@ -1,7 +1,14 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
+
+export interface Product {
+  id: string;
+  price: number;
+  description: string;
+}
 
 export interface State {
-  collection: any[];
+  collection: EntityState<Product>;
   error: string | null;
 }
 
@@ -9,8 +16,10 @@ export interface ProductsPartialState {
   readonly products: State;
 }
 
+export const adapter = createEntityAdapter<Product>();
+
 export const initialState: State = {
-  collection: [],
+  collection: adapter.getInitialState(),
   error: null
 };
 
@@ -20,7 +29,7 @@ export const products = createSlice({
   reducers: {
     loadProducts: () => {},
     loadProductsSuccess: (draft, action) => {
-      draft.collection = action.payload.products;
+      draft.collection = adapter.addAll(action.payload.products, draft.collection);
     },
     loadProductsFailure: (draft, action) => {
       draft.error = action.payload.error;
@@ -30,9 +39,15 @@ export const products = createSlice({
 
 export const ProductActions = products.actions;
 
+export const { selectAll } = adapter.getSelectors();
 export const selectProductsState = (state: ProductsPartialState) => state.products;
 
-export const selectProducts = createSelector(
+export const selectProductsCollection = createSelector(
   selectProductsState,
   state => state.collection
+);
+
+export const selectProducts = createSelector(
+  selectProductsCollection,
+  selectAll
 );
