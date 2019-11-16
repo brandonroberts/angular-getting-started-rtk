@@ -19,7 +19,7 @@ export class StoreService {
     store.subscribe(() => this._state$.next(store.getState()));
   }
 
-  select<In, Out>(selector: Selector<In, Out>) {
+  select<State, Result>(selector: Selector<State, Result>) {
     return this.state$.pipe(
       map(() => selector(store.getState() as any)),
       distinctUntilChanged()
